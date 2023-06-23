@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "u9MD3zSkyJBrLRb1EHSqWiA5J9iv4FWUF+k9Z6NtzbSL7vQWM/mGUco5eeOj/QKDhz22sWfNPuWZUPhhupWlMg==",
+  "dgSpecHash": "kKyL5jYw0o3cnSOJTW+uLnKXaP2vwF/+sBPhFFKm7wP2alQzhieFEsRc8TzNz2TDUFw7Ixjy2VVEXgWjW2L7bw==",
   "success": true,
-  "projectFilePath": "/media/inacio/HDD/Sinqia/Jenkins/Jenkins.csproj",
+  "projectFilePath": "D:\\GitHub\\Jenkins\\Jenkins.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

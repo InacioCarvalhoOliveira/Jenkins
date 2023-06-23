@@ -14,7 +14,8 @@ namespace Jenkins
             Process process = new Process(); 
             BranchSettings config = new BranchSettings();
 
-            process.StartInfo.FileName = "x-terminal-emulator";//cinamon terminal option
+            //process.StartInfo.FileName = "x-terminal-emulator";//cinamon terminal option
+            process.StartInfo.FileName = "cmd.exe";//cinamon terminal option
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.CreateNoWindow = true;
