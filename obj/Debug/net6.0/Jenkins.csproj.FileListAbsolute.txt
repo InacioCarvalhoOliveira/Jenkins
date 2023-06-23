@@ -1,0 +1,15 @@
+/media/inacio/HDD/Sinqia/Jenkins/bin/Debug/net6.0/Jenkins
+/media/inacio/HDD/Sinqia/Jenkins/bin/Debug/net6.0/Jenkins.deps.json
+/media/inacio/HDD/Sinqia/Jenkins/bin/Debug/net6.0/Jenkins.runtimeconfig.json
+/media/inacio/HDD/Sinqia/Jenkins/bin/Debug/net6.0/Jenkins.dll
+/media/inacio/HDD/Sinqia/Jenkins/bin/Debug/net6.0/ref/Jenkins.dll
+/media/inacio/HDD/Sinqia/Jenkins/bin/Debug/net6.0/Jenkins.pdb
+/media/inacio/HDD/Sinqia/Jenkins/obj/Debug/net6.0/Jenkins.csproj.AssemblyReference.cache
+/media/inacio/HDD/Sinqia/Jenkins/obj/Debug/net6.0/Jenkins.GeneratedMSBuildEditorConfig.editorconfig
+/media/inacio/HDD/Sinqia/Jenkins/obj/Debug/net6.0/Jenkins.AssemblyInfoInputs.cache
+/media/inacio/HDD/Sinqia/Jenkins/obj/Debug/net6.0/Jenkins.AssemblyInfo.cs
+/media/inacio/HDD/Sinqia/Jenkins/obj/Debug/net6.0/Jenkins.csproj.CoreCompileInputs.cache
+/media/inacio/HDD/Sinqia/Jenkins/obj/Debug/net6.0/Jenkins.dll
+/media/inacio/HDD/Sinqia/Jenkins/obj/Debug/net6.0/ref/Jenkins.dll
+/media/inacio/HDD/Sinqia/Jenkins/obj/Debug/net6.0/Jenkins.pdb
+/media/inacio/HDD/Sinqia/Jenkins/obj/Debug/net6.0/Jenkins.genruntimeconfig.cache
