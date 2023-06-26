@@ -28,3 +28,5 @@ D:\GitHub\Jenkins\obj\Debug\net6.0\refint\Jenkins.dll
 D:\GitHub\Jenkins\obj\Debug\net6.0\Jenkins.pdb
 D:\GitHub\Jenkins\obj\Debug\net6.0\Jenkins.genruntimeconfig.cache
 D:\GitHub\Jenkins\obj\Debug\net6.0\ref\Jenkins.dll
+D:\GitHub\Jenkins\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\GitHub\Jenkins\obj\Debug\net6.0\Jenkins.csproj.CopyComplete

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "kKyL5jYw0o3cnSOJTW+uLnKXaP2vwF/+sBPhFFKm7wP2alQzhieFEsRc8TzNz2TDUFw7Ixjy2VVEXgWjW2L7bw==",
+  "dgSpecHash": "QQUGO9O0k9nX8+WsCivdrOxO0dhx7MolxHYEXZ+eeXCF+sIowYhAjwU4eSXJRf/qhHXfvtgBNdmq2N2L03Gc1g==",
   "success": true,
   "projectFilePath": "D:\\GitHub\\Jenkins\\Jenkins.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\inacio.oliveira.SENIORSOLUTION\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
