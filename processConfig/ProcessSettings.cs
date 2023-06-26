@@ -1,0 +1,7 @@
+namespace processConfig
+{
+    class ProcessSettings
+    {
+
+    }
+}

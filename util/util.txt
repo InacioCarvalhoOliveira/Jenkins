@@ -1,0 +1,12 @@
+acesso ao tfs direto pelo terminal 
+# Definir as credenciais manualmente
+$username = "inacio.oliveira"
+$password = ConvertTo-SecureString -String "Flocktro0per.UHK66" -AsPlainText -Force
+$cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $username, $password
+
+# Fazer a solicitação ao site usando as credenciais
+$response = Invoke-WebRequest -Uri "https://tfs.seniorsolution.com.br/Consorcio" -Credential $cred
+
+
+clonando branch do TFS 
+git clone --single-branch --branch "feature/SQPLGR-19470_MelhoriaLog_Inacio" "https://tfs.seniorsolution.com.br/Consorcio/SQCONS-WebApi/_git/SQConsorcio.API"
