@@ -1,9 +1,16 @@
 {
+
     "Branch":"feature",
     "BranchName":"SQPLGR-19470_MelhoriaLog_Inacio",
     "TFSLink":"https://tfs.seniorsolution.com.br/Consorcio",
     "TagGit":"_git",
     "Project":"SQCONS-WebApi",
     "Repository":"SQConsorcio.API",
-    "PackagePath":"D:/GitHub/Jenkins/util/Pacotes"
+    "PackagePath":"D:/GitHub/Jenkins/util/Pacotes",
+
+    "Usuario":"",
+    "Senha":""
+
+
+    
 }
