@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using gitConfig;
 using packageConfig;
 using processConfig;
+using System.Text;
 
 namespace Jenkins
 {
@@ -19,32 +20,26 @@ namespace Jenkins
             BranchSettings branchSettings = new BranchSettings();
             ProcessSettings processSettings = new ProcessSettings();
 
-            process.StartInfo.FileName = "cmd.exe";
+            process.StartInfo.FileName = "powershell.exe";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.CreateNoWindow = true;
 
-            
-            //Privilegiando Invoker como Admin e removendo echo dos .bat 
-            string batchSet = " @echo OFF set __COMPAT_LAYER=RunAsAdmin";
-            process.StartInfo.Arguments = "/C " + batchSet;
-            #region passagem dos métodos da subclasse 
-            //branchSettings.catchingGitParams();
-            //packageSettings.buildingPakcage();
-            processSettings.authUser();  
-            Console.WriteLine("echo teste");
-            
+            #region chamada dos métodos das subclasses 
+            string arguments;
+            processSettings.authUser(out arguments);
+            process.StartInfo.Arguments = "-Command " + "\"" + arguments + "\"";
             #endregion
-
+            
             process.OutputDataReceived += (sender, e) =>
-
             {
                 if (!string.IsNullOrEmpty(e.Data))
                     Console.WriteLine(e.Data);
             };
             process.ErrorDataReceived += (sender, e) =>
             {
+               
                 if (!string.IsNullOrEmpty(e.Data))
                     Console.WriteLine("Error: " + e.Data);
             };
@@ -52,6 +47,7 @@ namespace Jenkins
             Stopwatch stopwatch = Stopwatch.StartNew();
             process.Start();
             process.BeginOutputReadLine();
+            process.BeginErrorReadLine();
             await process.WaitForExitAsync();
             stopwatch.Stop();
 
