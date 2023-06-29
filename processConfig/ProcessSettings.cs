@@ -1,50 +1,70 @@
+using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
+using gitConfig;
 using Newtonsoft.Json;
 
 namespace processConfig
 {
-    class ProcessSettings
+    class ProcessSettings: BranchSettings
     {
-
         public string Usuario { get; set; }
         public string Senha { get; set; }
        
-        void  _ProcessSettings()
-        {
-            string senha = Senha;    
-        }
-        
-        public void grantingPermission()
-        {         
-            string jsonPath = "D:\\GitHub\\Jenkins\\util\\params.json"; 
-            string usuario = "inacio.oliveira";//obj.Usuario;
-            string senha = "Flocktro0per.UHK66";//bj.Senha;      
-        
+        public void authUser()
+        { 
+            // TODO: melhorarar a busca do arquivo json
+            string jsonPath = "D:\\GitHub\\Jenkins\\util\\params.json";              
             try
             {               
-                Console.WriteLine("Usuário logado:" + usuario);                
-                string senhaGerada = gerarSenha(senha);
                 string json = File.ReadAllText(jsonPath);
-                var obj = JsonConvert.SerializeObject(value: _ProcessSettings);
+                var obj = JsonConvert.DeserializeObject<ProcessSettings>(json);
+                string senha = obj.Senha;
+                string usuario = obj.Usuario;
+                string urlTfs = obj.TFSLink;
+                Process settingProcess = new Process();
+                #region 
+                // TODO: encriptografia da senha passada/recebida no json
+                    // using (SHA256 sha256 = SHA256.Create())
+                    // {
+                    //     byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(senha));
+                    //     string hashedPassword = BitConverter.ToString(hashedBytes).Replace("-", string.Empty);
+                    //     Console.WriteLine(senha+"="+hashedPassword);
+                    // }
+                #endregion              
+
+                tfsauth(usuario,senha);
+
+                void tfsauth(string _usuario,string _senha)
+                {
+
+                    if(_usuario.Equals(usuario) &&  _senha.Equals(senha))
+                    {              
+                        string usrParam = $@" ""{_usuario}"" ";
+                        string pswdParam = $@" ""{_senha}"" ";
+
+                        string[] param = new string[4];
+                        param[0] = $@"$usuario = ""{_usuario}"" ";     
+                        param[1] = $@"$password = ConvertTo-SecureString -String ""{_senha}"" -AsPlainText -Force";     
+                        param[2] = $"$cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList {usrParam}, {pswdParam}"; 
+                        param[3] = $@"$response = Invoke-WebRequest -Uri ""{urlTfs}"" -Credential $cred";  
+                        
+                        foreach (string item in param)
+                        {
+                            Console.WriteLine(item);                
+                                          
+                        }                        
+                    }                    
+                }
             }
             catch (IOException ex)  
-            { Console.WriteLine("Error reading the file: " + ex.Message);}
+            { Console.WriteLine("Erro na leitura do arquivo: " + ex.Message);}
              catch (JsonException ex)
-            { Console.WriteLine("Error parsing the JSON: " + ex.Message);}
+            { Console.WriteLine("Erro no formato de parametro JSON: " + ex.Message);}
              catch (Exception ex)
-            { Console.WriteLine("Error: " + ex.Message);}
-        }
+            { Console.WriteLine("Erro: " + ex.Message);}
 
-        public static String gerarSenha(string senha)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(senha));
-                string hashedPassword = BitConverter.ToString(hashedBytes).Replace("-", string.Empty);
-                return hashedPassword = senha;
-            }
-        }      
+        }
         /*TODO tela que solicite a senha para que seja passada pelo terminal dos, e após autenticado enviar senha encriptografada
         para json params*/  
         #region 

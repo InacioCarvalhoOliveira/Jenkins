@@ -25,8 +25,9 @@
           "net6.0"
         ],
         "sources": {
-          "C:\\GitHub\\SQCONS-PLENOWEB-V15\\Silverlight\\Torresan.Silverlight\\obj": {},
+          "C:\\GitHub\\SQCONS-PLENOWEB-V15\\Silverlight\\Torresan.Shared.SL\\Bin": {},
           "C:\\GitHub\\SQCONS-PLENOWEB-V15\\Silverlight\\Torresan.Web\\bin": {},
+          "C:\\GitHub\\SQConsorcio.API\\bin": {},
           "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Users\\inacio.oliveira.SENIORSOLUTION\\OneDrive - Sinqia\\Documentos\\Corel\\Corel Content\\Export Presets": {},

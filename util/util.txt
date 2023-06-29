@@ -10,3 +10,7 @@ $response = Invoke-WebRequest -Uri "https://tfs.seniorsolution.com.br/Consorcio"
 
 clonando branch do TFS 
 git clone --single-branch --branch "feature/SQPLGR-19470_MelhoriaLog_Inacio" "https://tfs.seniorsolution.com.br/Consorcio/SQCONS-WebApi/_git/SQConsorcio.API"
+
+#POOLS IIS PADRONIZAÇÃO
+[USERNAME.DATABASE] - [NOME_SITE] = [SERVIÇO]
+RECON.WORLD-RECONAPP-APIVendas
