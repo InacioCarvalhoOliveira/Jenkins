@@ -16,22 +16,29 @@ namespace Jenkins
         {
             //Create a new process instance
             Process process = new Process();
-            PackageSettings packageSettings = new PackageSettings();
-            BranchSettings branchSettings = new BranchSettings();
             ProcessSettings processSettings = new ProcessSettings();
+            BranchSettings branchSettings = new BranchSettings();
+            PackageSettings packageSettings = new PackageSettings();
 
-            process.StartInfo.FileName = "powershell.exe";
-            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.FileName = "powershell.exe";//scripts rodando pelo powershell
+            process.StartInfo.UseShellExecute = false;//permite que seja feito o controle dos parametros com o MSBUILD
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
-            process.StartInfo.CreateNoWindow = true;
+            process.StartInfo.CreateNoWindow = true;//desabilita a janela de saída do terminal
 
+                         
+            
+            
+            
             #region chamada dos métodos das subclasses 
+                       
             string arguments;
             processSettings.authUser(out arguments);
-            process.StartInfo.Arguments = "-Command " + "\"" + arguments + "\"";
+            process.StartInfo.Arguments = "-Command " + "" + arguments + "";
+            branchSettings.catchingGitParams();
+
             #endregion
-            
+        
             process.OutputDataReceived += (sender, e) =>
             {
                 if (!string.IsNullOrEmpty(e.Data))
@@ -40,8 +47,8 @@ namespace Jenkins
             process.ErrorDataReceived += (sender, e) =>
             {
                
-                if (!string.IsNullOrEmpty(e.Data))
-                    Console.WriteLine("Error: " + e.Data);
+                 if (!string.IsNullOrEmpty(e.Data))
+                     Console.WriteLine("Error: " + e.Data);
             };
 
             Stopwatch stopwatch = Stopwatch.StartNew();

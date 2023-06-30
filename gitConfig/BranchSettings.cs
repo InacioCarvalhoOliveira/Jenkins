@@ -12,7 +12,7 @@ namespace gitConfig
         public string Project { get; set; }
         public string Repository { get; set; }
         public string PackagePath { get; set; }
-
+        string branchArguments;
         private ProcessStartInfo gitStartInfo;
         public void catchingGitParams()
         {
@@ -33,23 +33,30 @@ namespace gitConfig
                 string tagGit = obj.TagGit;
                 string project = obj.Project;
                 string repository = obj.Repository;
-
                 //TODO para ser feita a clonagem é preciso um novo diretório ou um vazio                
                 string packagePath = obj.PackagePath;
+
                 gitStartInfo = new ProcessStartInfo
                 {
-                    FileName = "git",RedirectStandardOutput = true,
-                    UseShellExecute = false,CreateNoWindow = true
-                };
-                gitStartInfo.Arguments = $"clone --single-branch --branch {branch}/{branchName}{tfsLink}/{project}/{tagGit}/{repository}/ {packagePath}";
+                FileName = "git",RedirectStandardOutput = true,
+                UseShellExecute = false,CreateNoWindow = true
+                };    
+                BuilderBranch builder = new BuilderBranch();
+                builder.branchCloning(out branchArguments);
+
+                string rawArguments = branchArguments.ToString();
+                string correctedArguments = rawArguments.Replace("\"", "").Replace("\\\"", "").Replace("\r\n", "");
+                branchArguments = correctedArguments;
+                
+                gitStartInfo.Arguments = branchArguments;
                 
                 Process gitProcess = new Process();
                 gitProcess.StartInfo = gitStartInfo;
                 gitProcess.Start();
                 gitProcess.WaitForExit();
 
-                Console.WriteLine("Branch Repository: " + branch);
-                Console.WriteLine("Branch to be Cloned: " + branchName);
+              
+                
             }
             catch (IOException ex)
             { Console.WriteLine("Error reading the file: " + ex.Message); }
@@ -59,7 +66,13 @@ namespace gitConfig
 
             catch (Exception ex)
             { Console.WriteLine("Error: " + ex.Message); }
+            
+      
+        
+       
         }
+
+   
     }
 }
 

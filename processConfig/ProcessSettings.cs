@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using gitConfig;
 using Newtonsoft.Json;
 
@@ -13,6 +14,7 @@ namespace processConfig
     {
         public string Usuario { get; set; }
         public string Senha { get; set; }
+        public string Dominio { get; set; }
         
         public void authUser(out string arguments)
         { 
@@ -23,8 +25,12 @@ namespace processConfig
             var obj = JsonConvert.DeserializeObject<ProcessSettings>(json);
             string senha = obj.Senha;
             string usuario = obj.Usuario;
+            string dominio = obj.Dominio;
             string tfsLink = obj.TFSLink;
+             
             #region 
+            // TODO: permissão de adm do powershel por comando
+            //$@"runas /user:""{usuario}""+""{dominio}"" ""powershell""");   
             // TODO: encriptografia da senha passada/recebida no json
             // using (SHA256 sha256 = SHA256.Create())
             // {
@@ -36,18 +42,23 @@ namespace processConfig
             
             string[] param = new string[4];
             param[0] = $@"$user = ""{usuario}""; ";     
-            param[1] = $@"$password = ConvertTo-SecureString -String ""{senha}"" -AsPlainText -Force;";     
-            param[2] = "$cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $user, $password;"; 
+            param[1] = $@"$password = ConvertTo-SecureString -String ""{senha}"" -AsPlainText -Force; ";     
+            param[2] = "$cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $user, $password; "; 
             param[3] = $@"$response = Invoke-WebRequest -Uri ""{tfsLink}"" -Credential $cred;";
 
             StringBuilder scriptBuilder = new StringBuilder();
-
             foreach (string item in param)
             {
                 scriptBuilder.AppendLine(item);
             }
             //coleta os itens do foreach e armazena tipo dado de retorno do método. 
-            arguments = scriptBuilder.ToString();                                                                                                                 
+            string rawArguments = scriptBuilder.ToString();
+            string correctedArguments = rawArguments.Replace("\"", "").Replace("\\\"", "").Replace("\r\n", "");
+            arguments = correctedArguments;
+                    
+
+
+            //$user = "inacio.oliveira";$password = ConvertTo-SecureString -String "Flocktro0per.UHK66" -AsPlainText -Force;$cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $user, $password;$response = Invoke-WebRequest -Uri "https://tfs.seniorsolution.com.br/Consorcio" -Credential $cred;                                                                                            
         }
     }
 }
