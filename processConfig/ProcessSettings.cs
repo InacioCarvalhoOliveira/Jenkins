@@ -41,10 +41,10 @@ namespace processConfig
             #endregion              
             
             string[] param = new string[4];
-            param[0] = $@"$user = ""{usuario}""; ";     
-            param[1] = $@"$password = ConvertTo-SecureString -String ""{senha}"" -AsPlainText -Force; ";     
-            param[2] = "$cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $user, $password; "; 
-            param[3] = $@"$response = Invoke-WebRequest -Uri ""{tfsLink}"" -Credential $cred;";
+            param[0] =  $@"$user = '{usuario}'; ";  
+            param[1] = $"$password = ConvertTo-SecureString -String '{senha}' -AsPlainText -Force; ";   
+            param[2] = "$cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $user, $password; ";
+            param[3] =$"$response = Invoke-WebRequest -Uri '{tfsLink}' -Credential $cred; ";
 
             StringBuilder scriptBuilder = new StringBuilder();
             foreach (string item in param)
@@ -53,9 +53,8 @@ namespace processConfig
             }
             //coleta os itens do foreach e armazena tipo dado de retorno do método. 
             string rawArguments = scriptBuilder.ToString();
-            string correctedArguments = rawArguments.Replace("\"", "").Replace("\\\"", "").Replace("\r\n", "");
-            arguments = correctedArguments;
-                    
+            string correctedArguments = rawArguments.Replace("\"", "").Replace("\r\n", "");
+            arguments = correctedArguments;                    
 
 
             //$user = "inacio.oliveira";$password = ConvertTo-SecureString -String "Flocktro0per.UHK66" -AsPlainText -Force;$cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $user, $password;$response = Invoke-WebRequest -Uri "https://tfs.seniorsolution.com.br/Consorcio" -Credential $cred;                                                                                            
