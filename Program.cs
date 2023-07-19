@@ -16,7 +16,7 @@ namespace Jenkins
         {
             //Create a new process instance
             Process process = new Process();
-            ProcessSettings processSettings = new ProcessSettings();
+            ConsoleSettings consoleSettings = new ConsoleSettings();
             BranchSettings branchSettings = new BranchSettings();
             PackageSettings packageSettings = new PackageSettings();
 
@@ -33,9 +33,13 @@ namespace Jenkins
             #region chamada dos métodos das subclasses 
                        
             string arguments;
-            processSettings.authUser(out arguments);
+            string packageArguments;
+            consoleSettings.authUser(out arguments);
             process.StartInfo.Arguments = "-Command " + "" + arguments + "";
             branchSettings.catchingGitParams();
+            packageSettings.buildingPackage(out packageArguments);
+            process.StartInfo.Arguments = "-Command " + "" + packageArguments + "";
+
 
             #endregion
         
@@ -45,10 +49,9 @@ namespace Jenkins
                     Console.WriteLine(e.Data);
             };
             process.ErrorDataReceived += (sender, e) =>
-            {
-               
+            {               
                  if (!string.IsNullOrEmpty(e.Data))
-                     Console.WriteLine("Error: " + e.Data);
+                     Console.WriteLine("Erro: " + e.Data);
             };
 
             Stopwatch stopwatch = Stopwatch.StartNew();
@@ -64,3 +67,4 @@ namespace Jenkins
         }
     }
 }
+
