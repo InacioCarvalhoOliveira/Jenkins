@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 
 namespace gitConfig
 {
-    class BranchSettings
+    class BranchSettings : BuilderBranch
     {
-        public string Branch { get; set; }
+        public string? Branch { get; set; }
         public string BranchName { get; set; }
         public string TFSLink { get; set; }
         public string TagGit { get; set; }
@@ -19,6 +19,8 @@ namespace gitConfig
             string jsonPath = "D:\\GitHub\\Jenkins\\util\\params.json";
             try
             {
+                Process gitProcess = new Process();
+
                 // Lê o conteúdo do arquivo JSON
                 string json = File.ReadAllText(jsonPath);
 
@@ -33,30 +35,27 @@ namespace gitConfig
                 string tagGit = obj.TagGit;
                 string project = obj.Project;
                 string repository = obj.Repository;
-                //TODO para ser feita a clonagem é preciso um novo diretório ou um vazio                
+                //TODO para ser feita a clonagem é preciso um novo diretório ou um vazio, mehorar isso       
                 string packagePath = obj.PackagePath;
 
                 gitStartInfo = new ProcessStartInfo
                 {
-                FileName = "git",RedirectStandardOutput = true,
-                UseShellExecute = false,CreateNoWindow = true
+                    FileName = "git",RedirectStandardOutput = true,
+                    UseShellExecute = false,CreateNoWindow = true
                 };    
                 BuilderBranch builder = new BuilderBranch();
                 builder.branchCloning(out branchArguments);
 
                 string rawArguments = branchArguments.ToString();
                 string correctedArguments = rawArguments.Replace("\"", "").Replace("\\\"", "").Replace("\r\n", "");
-                branchArguments = correctedArguments;
-                
+                branchArguments = correctedArguments;        
+
                 gitStartInfo.Arguments = branchArguments;
-                
-                Process gitProcess = new Process();
                 gitProcess.StartInfo = gitStartInfo;
                 gitProcess.Start();
-                gitProcess.WaitForExit();
-
-              
-                
+                gitProcess.WaitForExit(); 
+               
+                          
             }
             catch (IOException ex)
             { Console.WriteLine("Error reading the file: " + ex.Message); }

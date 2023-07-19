@@ -2,43 +2,52 @@ using System.Diagnostics;
 using System.Text;
 using Newtonsoft.Json;
 using processConfig;
+using packageConfig;
 
 namespace gitConfig
 {
-    class BuilderBranch : BranchSettings
+    class BuilderBranch
     {
 
         public void branchCloning (out string branchArguments)
         {
-            string jsonPath = "D:\\GitHub\\Jenkins\\util\\params.json";              
-                          
+            string jsonPath = "D:\\GitHub\\Jenkins\\util\\params.json";        
             string json = File.ReadAllText(jsonPath);
-            var obj = JsonConvert.DeserializeObject<BranchSettings>(json);
+            var branchSettings = JsonConvert.DeserializeObject<BranchSettings>(json);
+            var packageSettings = JsonConvert.DeserializeObject<PackageSettings>(json);
         
-            string branch = obj.Branch;
-            string branchName = obj.BranchName;
-            string tfsLink = obj.TFSLink;
-            string project = obj.Project;
-            string tagGit = obj.TagGit;
-            string repository = obj.Repository;
-            string packagePath = obj.PackagePath;
+            string branch = branchSettings.Branch;
+            string branchName = branchSettings.BranchName;
+            string tfsLink = branchSettings.TFSLink;
+            string project = branchSettings.Project;
+            string tagGit = branchSettings.TagGit;
+            string repository = branchSettings.Repository;
+            string packagePath = branchSettings.PackagePath;
+
+            string packageType = packageSettings.PackageType;
+            string solutionProject = packageSettings.SolutionProject;
             
+            if(branch != null && branchName != null){}
+
             string[] param = new string[4];
             param[0] = "clone --single-branch --branch ";     
-            param[1] = $@" ""{branch}/{branchName}"" ";     
-            param[2] = $@" ""{tfsLink}/{project}/{tagGit}/{repository}/"" "; 
-            param[3] = $@" "" {packagePath}"" ";                    
-        
-            Console.WriteLine("Branch Repository: " + branch);
-            Console.WriteLine("Branch to be Cloned: " + branchName);
+            param[1] = $" {branch}/{branchName} ";     
+            param[2] = $" {tfsLink}/{project}/{tagGit}/{repository}/ "; 
+            param[3] = $" {packagePath}/{packageType}/{branchName}_{solutionProject}";                 
 
             StringBuilder scriptBuilder = new StringBuilder();
             foreach (string item in param)
             {
                 scriptBuilder.AppendLine(item);
             }
+            //TODO: passar método que valida os dados no json com o userMachine chamada da classe ConsoleSettings
             //coleta os itens do foreach e armazena tipo dado de retorno do método. 
-            branchArguments = scriptBuilder.ToString().Replace("\\", "");
+            // TODO: padronizar forma de coleta e ajuste dos dados pelo json 
+            string rawArguments = scriptBuilder.ToString();
+            string correctedArguments = rawArguments.Replace("\"", "").Replace("\r\n", "");
+            branchArguments = correctedArguments; 
+            
+            
             
         }
     }

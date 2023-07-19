@@ -1,16 +1,22 @@
 {
-
     "Branch":"feature",
-    "BranchName":"SQPLGR-19470_MelhoriaLog_Inacio",
+    "BranchName":"SD-108467-TransferenciaDeCota_BrunoAS",
     "TFSLink":"https://tfs.seniorsolution.com.br/Consorcio",
     "TagGit":"_git",
     "Project":"SQCONS-WebApi",
     "Repository":"SQConsorcio.API",
-    "PackagePath":"D:/GitHub/Jenkins/util/Pacotes",
+    
     "Usuario":"inacio.oliveira",
     "Dominio":"@sinqia.com.br",
-    "Senha":"Flocktro0per.UHK66"
-
-
+    "Senha":"Flocktro0per.UHK69",
     
+    "SkdVersion":"C:/Program Files/dotnet/sdk/5.0.408/dotnet",
+    "PackagePath":"D:/GitHub/PublishedPack",
+    "PackageType":"api",
+    "Pubmode":"Release",
+    "SolutionPlatform":"win-x64",
+    "PathProject":"D:/GitHub/PublishedPack",
+    "NameProj":"SQConsorcio",
+    "SolutionProject":"APIVendas",
+    "SendTo":"D:/GitHub/PublishedPack/pub"
 }

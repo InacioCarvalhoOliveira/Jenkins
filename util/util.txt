@@ -12,3 +12,5 @@ git clone --single-branch --branch "feature/SQPLGR-19470_MelhoriaLog_Inacio" "ht
 #POOLS IIS PADRONIZAÇÃO
 [USERNAME.DATABASE] - [NOME_SITE] = [SERVIÇO]
 RECON.WORLD-RECONAPP-APIVendas
+
+gerar pacote: dotnet publish -c Release -r win-x64 --output "D:\GitHub\PublishedPack\pub" "D:\GitHub\PublishedPack\api\SQConsorcio.APIVendas.sln"
