@@ -13,3 +13,16 @@ Recursos utilizados:
 ## Diagrama de Implantação Jenkins
 ![diagramaIpl](./images/cd-pleno.png)
 #
+
+
+# gap de erros: 
+
+o clone ocorre apenas 1 vez ao autenticar o usuário, contudo se for fazer um processo para gerar 3 pacotes( vendas,service,consoriciado) por exemplo dá o erro 
+
+erro: MSBuild version 17.3.2+561848881 for .NET
+MSBUILD : error MSB1009: Arquivo de projeto não existe.
+Opção: D:/GitHub/PublishedPack/api/develop_APIVendas/SQConsorcio.APIVendas.sln
+Command executed in: 662,226 ms
+
+obs: isto o ocrre devido a falta de condição, se o pacote clonado já existe, está gerando um novo pacote e quebrando a 
+condição de branch que é feita nos arquivos de montagem de branch. verificar este ponto.

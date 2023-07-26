@@ -1,6 +1,6 @@
 {
-    "Branch":"feature",
-    "BranchName":"SD-108467-TransferenciaDeCota_BrunoAS",
+    "Branch":"",
+    "BranchName":"develop",
     "TFSLink":"https://tfs.seniorsolution.com.br/Consorcio",
     "TagGit":"_git",
     "Project":"SQCONS-WebApi",
