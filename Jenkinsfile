@@ -8,11 +8,9 @@ pipeline {
                     echo "buildando projeto"
                     dotnet run
                 '''
-
             }
         }
     }
-}
 post {
         always {
             echo "This will always run regardless of the completion status"
@@ -34,3 +32,4 @@ post {
             echo "This will run if the previous run failed or unstable and now is successful"
         }
     }
+}
