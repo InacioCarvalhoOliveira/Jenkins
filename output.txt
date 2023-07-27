@@ -1,0 +1,98 @@
+Started by user Inacio Carvalho de Oliveira 
+
+
+Lightweight checkout support not available, falling back to full checkout.
+Checking out git https://github.com/InacioCarvalhoOliveira/Jenkins.git into /home/inacio/.jenkins/workspace/pipetest@script/d13bcaeb6fe9aa25577ebb465dd315b721a3961644baff601b0ed0aabcc11ac7 to read Jenkinsfile
+
+The recommended git tool is: git
+
+using credential PersonalPipe
+ > git rev-parse --resolve-git-dir /home/inacio/.jenkins/workspace/pipetest@script/d13bcaeb6fe9aa25577ebb465dd315b721a3961644baff601b0ed0aabcc11ac7/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/InacioCarvalhoOliveira/Jenkins.git # timeout=10
+Fetching upstream changes from https://github.com/InacioCarvalhoOliveira/Jenkins.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+using GIT_ASKPASS to set credentials PersonalPipe
+ > git fetch --tags --force --progress -- https://github.com/InacioCarvalhoOliveira/Jenkins.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/developMint^{commit} # timeout=10
+Checking out Revision 131967ff12ced593296a9a17735384050dedf31f (refs/remotes/origin/developMint)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 131967ff12ced593296a9a17735384050dedf31f # timeout=10
+Commit message: "new stuff"
+
+First time build. Skipping changelog.
+
+[Pipeline] Start of Pipeline
+[Pipeline] node
+
+Running on Jenkins in /home/inacio/.jenkins/workspace/pipetest
+
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+
+The recommended git tool is: git
+
+using credential PersonalPipe
+ > git rev-parse --resolve-git-dir /home/inacio/.jenkins/workspace/pipetest/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/InacioCarvalhoOliveira/Jenkins.git # timeout=10
+Fetching upstream changes from https://github.com/InacioCarvalhoOliveira/Jenkins.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+using GIT_ASKPASS to set credentials PersonalPipe
+ > git fetch --tags --force --progress -- https://github.com/InacioCarvalhoOliveira/Jenkins.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/developMint^{commit} # timeout=10
+Checking out Revision 131967ff12ced593296a9a17735384050dedf31f (refs/remotes/origin/developMint)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 131967ff12ced593296a9a17735384050dedf31f # timeout=10
+Commit message: "new stuff"
+
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] echo
+Building the app...
+[Pipeline] sh
++ echo buildando projeto
+buildando projeto
++ dotnet run
+
+Welcome to .NET 6.0!
+---------------------
+SDK Version: 6.0.120
+
+----------------
+Installed an ASP.NET Core HTTPS development certificate.
+To trust the certificate run 'dotnet dev-certs https --trust' (Windows and macOS only).
+Learn about HTTPS: https://aka.ms/dotnet-https
+----------------
+Write your first app: https://aka.ms/dotnet-hello-world
+Find out what's new: https://aka.ms/dotnet-whats-new
+Explore documentation: https://aka.ms/dotnet-docs
+Report issues and find source on GitHub: https://github.com/dotnet/core
+Use 'dotnet --help' to see available commands or visit: https://aka.ms/dotnet-cli
+--------------------------------------------------------------------------------------
+/home/inacio/.jenkins/workspace/pipetest/packageConfig/SolutionSettings.cs(7,23): warning CS8618: Non-nullable property 'SolutionPlataform' must contain a non-null value when exiting constructor. Consider declaring the property as nullable. [/home/inacio/.jenkins/workspace/pipetest/Jenkins.csproj]
+/home/inacio/.jenkins/workspace/pipetest/packageConfig/PackageSettings.cs(7,21): warning CS8618: Non-nullable property 'PackageType' must contain a non-null value when exiting constructor. Consider declaring the property as nullable. [/home/inacio/.jenkins/workspace/pipetest/Jenkins.csproj]
+/home/inacio/.jenkins/workspace/pipetest/packageConfig/PackageSettings.cs(8,21): warning CS8618: Non-nullable property 'PublishType' must contain a non-null value when exiting constructor. Consider declaring the property as nullable. [/home/inacio/.jenkins/workspace/pipetest/Jenkins.csproj]
+/home/inacio/.jenkins/workspace/pipetest/packageConfig/PackageSettings.cs(9,21): warning CS8618: Non-nullable property 'BranchSelected' must contain a non-null value when exiting constructor. Consider declaring the property as nullable. [/home/inacio/.jenkins/workspace/pipetest/Jenkins.csproj]
+/home/inacio/.jenkins/workspace/pipetest/packageConfig/PackageSettings.cs(10,37): warning CS8618: Non-nullable property 'SolutionConfigs' must contain a non-null value when exiting constructor. Consider declaring the property as nullable. [/home/inacio/.jenkins/workspace/pipetest/Jenkins.csproj]
+/home/inacio/.jenkins/workspace/pipetest/packageConfig/PackageSettings.cs(11,21): warning CS8618: Non-nullable property 'DirToDrop' must contain a non-null value when exiting constructor. Consider declaring the property as nullable. [/home/inacio/.jenkins/workspace/pipetest/Jenkins.csproj]
+/home/inacio/.jenkins/workspace/pipetest/gitConfig/BranchSettings.cs(8,24): warning CS8618: Non-nullable property 'BranchName' must contain a non-null value when exiting constructor. Consider declaring the property as nullable. [/home/inacio/.jenkins/workspace/pipetest/Jenkins.csproj]
+/home/inacio/.jenkins/workspace/pipetest/gitConfig/BranchSettings.cs(9,34): warning CS8618: Non-nullable field 'gitStartInfo' must contain a non-null value when exiting constructor. Consider declaring the field as nullable. [/home/inacio/.jenkins/workspace/pipetest/Jenkins.csproj]
+Current branch: 
+Command executed in: 127.5018 ms
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
