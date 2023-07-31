@@ -14,3 +14,9 @@ git clone --single-branch --branch "feature/SQPLGR-19470_MelhoriaLog_Inacio" "ht
 RECON.WORLD-RECONAPP-APIVendas
 
 gerar pacote: dotnet publish -c Release -r win-x64 --output "D:\GitHub\PublishedPack\pub" "D:\GitHub\PublishedPack\api\SQConsorcio.APIVendas.sln"
+
+
+    ssh-keygen -t ed25519 -C "inacio.carvalho.oliveira02@gmail.com"
+    passfr: youshallnotpass
+    ssh : "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGzfKGvRT4+F/9W/+zb1kkK8l9pYtKKD8FzEPkw0DjBX inacio.carvalho.oliveira02@gmail.com"
+

@@ -17,6 +17,8 @@
     "SolutionPlatform":"win-x64",
     "PathProject":"D:/GitHub/PublishedPack",
     "NameProj":"SQConsorcio",
-    "SolutionProject":"APIVendas",
+    "SolutionProject":"API",
+    "AliasSolution":"solucao",
+    "AliasPublication":"consorciado",
     "SendTo":"D:/GitHub/PublishedPack/pub"
 }

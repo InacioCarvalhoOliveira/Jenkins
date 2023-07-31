@@ -19,6 +19,7 @@ namespace Jenkins
             ConsoleSettings consoleSettings = new ConsoleSettings();
             BranchSettings branchSettings = new BranchSettings();
             PackageSettings packageSettings = new PackageSettings();
+            BuilderBranch builderBranch = new BuilderBranch();
 
             process.StartInfo.FileName = "powershell.exe";//scripts rodando pelo powershell
             process.StartInfo.UseShellExecute = false;//permite que seja feito o controle dos parametros com o MSBUILD
@@ -26,32 +27,28 @@ namespace Jenkins
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.CreateNoWindow = true;//desabilita a janela de saída do terminal
 
-                         
-            
-            
-            
             #region chamada dos métodos das subclasses 
-                       
             string arguments;
             string packageArguments;
             consoleSettings.authUser(out arguments);
             process.StartInfo.Arguments = "-Command " + "" + arguments + "";
-            branchSettings.catchingGitParams();
+
+            //branchSettings.catchingGitParams();
+            builderBranch.branchCloning();
+
             packageSettings.buildingPackage(out packageArguments);
             process.StartInfo.Arguments = "-Command " + "" + packageArguments + "";
-
-
             #endregion
-        
+
             process.OutputDataReceived += (sender, e) =>
             {
                 if (!string.IsNullOrEmpty(e.Data))
                     Console.WriteLine(e.Data);
             };
             process.ErrorDataReceived += (sender, e) =>
-            {               
-                 if (!string.IsNullOrEmpty(e.Data))
-                     Console.WriteLine("Erro: " + e.Data);
+            {
+                if (!string.IsNullOrEmpty(e.Data))
+                    Console.WriteLine("Erro: " + e.Data);
             };
 
             Stopwatch stopwatch = Stopwatch.StartNew();
@@ -62,8 +59,7 @@ namespace Jenkins
             stopwatch.Stop();
 
             TimeSpan elapsedTime = stopwatch.Elapsed;
-            Console.WriteLine("Command executed in: " + elapsedTime.TotalMilliseconds + " ms");           
-            
+            Console.WriteLine("Command executed in: " + elapsedTime.TotalMilliseconds + " ms");
         }
     }
 }
