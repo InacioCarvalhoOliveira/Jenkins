@@ -32,6 +32,9 @@ namespace gitConfig
 
             // Display the branch name
             Console.WriteLine("Current branch: " + BranchName);
+           string a =  Console.ReadLine();
+            Console.WriteLine($"{a}");
+            
         
         }
     }
