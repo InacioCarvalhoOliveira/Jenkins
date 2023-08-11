@@ -8,17 +8,17 @@ namespace gitConfig
     class BranchSettings : BuilderBranch
     {
         public string? Branch { get; set; }
-        public string BranchName { get; set; }
-        public string TFSLink { get; set; }
-        public string TagGit { get; set; }
-        public string Project { get; set; }
-        public string Repository { get; set; }
-        public string PackagePath { get; set; }
-        string branchArguments;
-        private ProcessStartInfo gitStartInfo;
+        public string? BranchName { get; set; }
+        public string? TFSLink { get; set; }
+        public string? TagGit { get; set; }
+        public string? Project { get; set; }
+        public string? Repository { get; set; }
+        public string? PackagePath { get; set; }
+        string? branchArguments { get; set; }
+        private ProcessStartInfo? gitStartInfo;
         public void catchingGitParams()
         {
-            string jsonPath = "D:\\GitHub\\Jenkins\\util\\params.json";
+            string jsonPath = "D:\\GitHub\\Jenkins\\util\\api_params.json";
             try
             {
                 Process gitProcess = new Process();
@@ -27,26 +27,12 @@ namespace gitConfig
                 string json = File.ReadAllText(jsonPath);
 
                 // Faz o parsing do JSON para um objeto
-                var obj = JsonConvert.DeserializeObject<BranchSettings>(json);
+                var branchSettings = JsonConvert.DeserializeObject<BranchSettings>(json);
                 var packageSettings = JsonConvert.DeserializeObject<PackageSettings>(json);
-
-                // Obtém o valor da propriedade BranchName
-                //TODO melhorar atibuição das variáveis aos objetos
-                string branchName = obj.BranchName;
-                string branch = obj.Branch;
-                string tfsLink = obj.TFSLink;
-                string tagGit = obj.TagGit;
-                string project = obj.Project;
-                string repository = obj.Repository;
-                //TODO para ser feita a clonagem é preciso um novo diretório ou um vazio, mehorar isso       
-                string packagePath = obj.PackagePath;
-
-                string packageType = packageSettings.PackageType;
-                string aliasSolution = packageSettings.AliasSolution;
 
                 gitStartInfo = new ProcessStartInfo
                 {
-                    FileName = "git",
+                    FileName = "git",/// <c>text</c>
                     RedirectStandardOutput = true,
                     UseShellExecute = false,
                     CreateNoWindow = true
@@ -58,9 +44,9 @@ namespace gitConfig
 
                     string[] param = new string[4];
                     param[0] = "clone --single-branch --branch ";
-                    param[1] = $" {branch}{branchName} ";
-                    param[2] = $" {tfsLink}/{project}/{tagGit}/{repository}/ ";
-                    param[3] = $" {packagePath}/{packageType}/{aliasSolution}";
+                    param[1] = $" {branchSettings?.Branch}{branchSettings?.BranchName} ";
+                    param[2] = $" {branchSettings?.TFSLink}/{branchSettings?.Project}/{branchSettings?.TagGit}/{branchSettings?.Repository}/ ";
+                    param[3] = $" {branchSettings?.PackagePath}/{packageSettings?.PackageType}/{packageSettings?.AliasSolution}";
 
                     StringBuilder scriptBuilder = new StringBuilder();
                     foreach (string item in param)
@@ -72,11 +58,11 @@ namespace gitConfig
                     // //coleta os itens do foreach e armazena tipo dado de retorno do método.
                     // // TODO: padronizar forma de coleta e ajuste dos dados pelo json. 
                     string rawArguments = scriptBuilder.ToString();
-                    // string correctedArguments = rawArguments.Replace("\"", "").Replace("\r\n", "");
                     branchArguments = rawArguments;
                     return branchArguments;
                 }
-               
+
+
                 string rawArguments = branchArguments.ToString();
                 string correctedArguments = rawArguments.Replace("\"", "").Replace("\\\"", "").Replace("\r\n", "");
                 branchArguments = correctedArguments;

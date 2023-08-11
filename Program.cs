@@ -28,16 +28,16 @@ namespace Jenkins
             process.StartInfo.CreateNoWindow = true;//desabilita a janela de saída do terminal
 
             #region chamada dos métodos das subclasses 
-            string arguments;
-            string packageArguments;
-            consoleSettings.authUser(out arguments);
-            process.StartInfo.Arguments = "-Command " + "" + arguments + "";
-
+            string authArguments;
+            string apiPackageArguments;
+            consoleSettings.authUser(out authArguments);
+            process.StartInfo.Arguments = "-Command " + "" + authArguments + "";
+            
             //branchSettings.catchingGitParams();
             builderBranch.branchCloning();
 
-            packageSettings.buildingPackage(out packageArguments);
-            process.StartInfo.Arguments = "-Command " + "" + packageArguments + "";
+            packageSettings.buildingApiPackage(out apiPackageArguments);
+            process.StartInfo.Arguments = "-Command " + "" + apiPackageArguments + "";
             #endregion
 
             process.OutputDataReceived += (sender, e) =>
