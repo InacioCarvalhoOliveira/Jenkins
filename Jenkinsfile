@@ -1,7 +1,28 @@
 pipeline {
     agent any
-    stages {
+    parameters {
+        editableChoice(
+        //name: 'Senha do Hoster admin da maquina',
+        password(name: 'PasswdHoster', defaultValue: '', description: 'Enter your password')
+        // password(name: 'PASSWORD', defaultValue: '', description: 'Enter your password')
+        // password(name: 'PASSWORD', defaultValue: '', description: 'Enter your password')
+        // password(name: 'PASSWORD', defaultValue: '', description: 'Enter your password')
+        // password(name: 'PASSWORD', defaultValue: '', description: 'Enter your password')
+    )
+  }
+   
+    }
+    stages {        
         stage("Build") {
+            steps {
+                echo "PasswdHoster=${params.PASSWORD}"
+                // echo "PASSWORD=${params.PASSWORD}"
+                // echo "PASSWORD=${params.PASSWORD}"
+                // echo "PASSWORD=${params.PASSWORD}"
+            }
+
+
+
             steps {
             echo "Building the app..."
                 sh '''
