@@ -2,13 +2,14 @@ pipeline {
     agent any
     parameters {
         password(name: 'Senha', defaultValue: '', description: 'Senha Hoster') 
-        password(name: 'Senha2', defaultValue: '', description: 'Senha Hoster')      
+        text(name: 'Usuario', defaultValue: '', description: 'Usuário Hoster') 
+            
     }
     stages {
         stage("Build") {
             steps {
                 echo "Senha=${params.Senha}"
-                echo "Senha2=${params.Senha2}"
+                echo "Usuario=${params.Usuario}"
             }
         }
         stage("Test") {
