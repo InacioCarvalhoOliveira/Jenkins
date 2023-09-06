@@ -2,10 +2,8 @@ pipeline {
     agent any
     parameters {
         password(name: 'Senha', defaultValue: '', description: 'Senha Hoster'),
-        string(name: 'Usuario', defaultValue: '', whitespace= False, description: 'Usuario Hoster')
+        string(name: 'Usuario', defaultValue: '', whitespace= false, description: 'Usuario Hoster'),
         
-        
-
        
     }
     stages {
