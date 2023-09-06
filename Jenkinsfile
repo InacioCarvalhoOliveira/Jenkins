@@ -8,6 +8,7 @@ pipeline {
         stage("Build") {
             steps {
                 echo "Senha=${params.Senha}"
+                echo "Senha2=${params.Senha2}"
             }
         }
         stage("Test") {
