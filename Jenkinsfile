@@ -3,16 +3,17 @@ pipeline {
     parameters {
         password(name: 'Senha', defaultValue: '', description: 'Senha Hoster') 
         string(name: 'Usuario', defaultValue: '', description: 'Usuário Hoster')
-        choice(
-            name: 'Escolha dos pacotes a serem gerados',
-            description: 'Descrição dos pacotes:',
-            choices:['V15','V16','*V16'],
-            defaultValue:('teste,'
-                           'teste,'
-                           'teste,'
-                           'teste,'),
-            restrict: true,
-            filterConfig: filterConfig(prefix: true, caseInsensitive: true))
+            choice(
+                name: 'Escolha dos pacotes a serem gerados',
+                description:"""Descrição dos pacotes:
+                        - V15: APPConsorciado, AppVendas, WebConsorciado, PlenoWeb, VendasService, APIService, Pleno;
+                        - V16: APPConsorcio, APIVendas, APIService, APIConsorciado;
+                        - *V16: APPConsorciado, AppVendas, APIVendas, APIService, APIConsorciado;                    
+                           Ou então gere os pacotes individualmente logo abaixo:""",
+                choices:['V15','V16','*V16'],
+                defaultValue:'',
+                restrict: true,
+                filterConfig: filterConfig(prefix: true, caseInsensitive: true))
             
     }
     stages {
