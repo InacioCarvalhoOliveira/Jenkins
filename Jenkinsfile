@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage("Build") {
             steps {
-                echo "PasswdHoster=${params.PasswdHoster}"
+                echo "Senha=${params.Senha}"
             }
         }
         stage("Test") {
