@@ -15,7 +15,7 @@ pipeline {
                     }
                     return choices
                 ''',
-                defaultValue:'a'
+                defaultValue:'a')
                 //choices:['V15','V16','*V16'])
     }
     stages {
