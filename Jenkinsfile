@@ -7,7 +7,13 @@ pipeline {
             name: 'Escolha dos pacotes a serem gerados',
             description: 'Descrição dos pacotes:',
             choices:['V15','V16','*V16'],
-            defaultValue: 'Escolha...',
+            defaultValue: 'as
+            as
+            as
+            as
+            as
+            as
+            as',
             restrict: true,
             filterConfig: filterConfig(prefix: true, caseInsensitive: true))
             
