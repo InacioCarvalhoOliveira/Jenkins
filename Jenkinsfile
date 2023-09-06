@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        password(name: 'Senha', defaultValue: '', description: 'Senha Hoster')
+        password(name: 'Senha', defaultValue: '', description: 'Senha Hoster'),
         string(name: 'Usuario', defaultValue: '', whitespace= False, description: 'Usuario Hoster')
         editableChoice(
             name: 'Escolha dos pacotes a serem gerados',
