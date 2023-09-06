@@ -5,7 +5,7 @@ pipeline {
         string(name: 'Usuario', defaultValue: '', description: 'Usuário Hoster')
             choice(
                 name: 'Escolha dos pacotes a serem gerados',
-                description:'V15: APPConsorciado, AppVendas, WebConsorciado, PlenoWeb, VendasService, APIService, Pleno;\nV16: APPConsorcio, APIVendas, APIService, APIConsorciado;\n*V16: APPConsorciado, AppVendas, APIVendas, APIService, APIConsorciado;\nOu então gere os pacotes individualmente logo abaixo',
+                description:'Descrição dos pacotes:\n- V15: APPConsorciado, AppVendas, WebConsorciado, PlenoWeb, VendasService, APIService, Pleno;\n- V16: APPConsorcio, APIVendas, APIService, APIConsorciado;\n- *V16: APPConsorciado, AppVendas, APIVendas, APIService, APIConsorciado;\nOu então gere os pacotes individualmente logo abaixo',
                 choices:['V15','V16','*V16'])
                 
     }
