@@ -12,16 +12,16 @@ pipeline {
             description:'Versão desejada para pacotes individuais\nobs:\nV15 - Release Legada;\nV16 - Release Atual;\n*V16 - Release atual com front legado',
             choices:['V15','V16','*V16'])
 
-        booleanParam(name:'APIVendas', defaultValue:false, description:'teste:\nteste')
-        booleanParam(name:'APIService', defaultValue:false, description:'teste:\nteste')
-        booleanParam(name:'APIConsorciado', defaultValue:false, description:'teste:\nteste')
-        booleanParam(name:'APPConsorcio', defaultValue:false, description:'obs: * = legado')
-        booleanParam(name:'*APPVendas', defaultValue:false, description:'obs: * = legado')
-        booleanParam(name:'*APPConsorciado', defaultValue:false, description:'obs: * = legado')
-        booleanParam(name:'*WEBConsorciado', defaultValue:false, description:'obs: * = legado')
-        booleanParam(name:'*PlenoWeb', defaultValue:false, description:'obs: * = legado')
-        booleanParam(name:'*PlenoService', defaultValue:false, description:'obs: * = legado')
-        booleanParam(name:'*VendasService', defaultValue:false, description:'obs: * = legado')            
+        booleanParam(name:'APIVendas', defaultValue:false)
+        booleanParam(name:'APIService', defaultValue:false)
+        booleanParam(name:'APIConsorciado', defaultValue:false)
+        booleanParam(name:'APPConsorcio', defaultValue:false)
+        booleanParam(name:'*APPVendas', defaultValue:false, description:'obs: legado')
+        booleanParam(name:'*APPConsorciado', defaultValue:false, description:'obs: legado')
+        booleanParam(name:'*WEBConsorciado', defaultValue:false, description:'obs: legado')
+        booleanParam(name:'*PlenoWeb', defaultValue:false, description:'obs: legado')
+        booleanParam(name:'*PlenoService', defaultValue:false, description:'obs: legado')
+        booleanParam(name:'*VendasService', defaultValue:false, description:'obs: legado')            
     }
     stages {
         stage("Build") {
