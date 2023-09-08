@@ -7,7 +7,7 @@ pipeline {
                 name: 'Pacote',
                 description:'Descrição dos pacotes:\n- V15: APPConsorciado, AppVendas, WebConsorciado, PlenoWeb, VendasService, APIService, Pleno;\n- V16: APPConsorcio, APIVendas, APIService, APIConsorciado;\n- *V16: APPConsorciado, AppVendas, APIVendas, APIService, APIConsorciado;\nOu então gere os pacotes individualmente logo abaixo',
                 choices:['V15','V16','*V16'])
-            boolean(name:'01',defaultValue=false,description='teste')
+            booleanParam(name:'01',defaultValue=false,description='teste')
          
                 
     }
