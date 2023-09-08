@@ -25,7 +25,7 @@ pipeline {
     }
     stages {
         stage("Build") {
-            // steps {
+             steps {
             //     // Access the selected choice parameter
             //     echo "Senha=${params.Senha}"
             //     echo "Usuario=${params.Usuario}"
@@ -40,32 +40,32 @@ pipeline {
             //     echo "*PlenoWeb=${params.*PlenoWeb}"
             //     echo "*PlenoService=${params.*PlenoService}"
             //     echo "*VendasService=${params.*VendasService}"
-            // }
 
-            script {
-                    def parametrosJson = [
-                        Senha: params.Senha,
-                        Usuario: params.Usuario,
-                        Pacote: params.Pacote,
-                        'Pacotes individuais': params['Pacotes individuais'],
-                        APIVendas: params.APIVendas,
-                        APIService: params.APIService,
-                        APIConsorciado: params.APIConsorciado,
-                        APPConsorcio: params.APPConsorcio,
-                        '*APPVendas': params['*APPVendas'],
-                        '*APPConsorciado': params['*APPConsorciado'],
-                        '*WEBConsorciado': params['*WEBConsorciado'],
-                        '*PlenoWeb': params['*PlenoWeb'],
-                        '*PlenoService': params['*PlenoService'],
-                        '*VendasService': params['*VendasService']
-                    ]
+                script {
+                        def parametrosJson = [
+                            Senha: params.Senha,
+                            Usuario: params.Usuario,
+                            Pacote: params.Pacote,
+                            'Pacotes individuais': params['Pacotes individuais'],
+                            APIVendas: params.APIVendas,
+                            APIService: params.APIService,
+                            APIConsorciado: params.APIConsorciado,
+                            APPConsorcio: params.APPConsorcio,
+                            '*APPVendas': params['*APPVendas'],
+                            '*APPConsorciado': params['*APPConsorciado'],
+                            '*WEBConsorciado': params['*WEBConsorciado'],
+                            '*PlenoWeb': params['*PlenoWeb'],
+                            '*PlenoService': params['*PlenoService'],
+                            '*VendasService': params['*VendasService']
+                        ]
 
-                    def jsonString = groovy.json.JsonOutput.toJson(parametrosJson)
-                    writeFile file: 'parametros.json', text: jsonString
+                        def jsonString = groovy.json.JsonOutput.toJson(parametrosJson)
+                        writeFile file: 'parametros.json', text: jsonString
 
-                    // Imprime o JSON (opcional)
-                    echo "JSON de Parâmetros: ${jsonString}"
-                }
+                        // Imprime o JSON (opcional)
+                        echo "JSON de Parâmetros: ${jsonString}"
+                    }
+            }
         }
         stage("Test") {
             steps {
