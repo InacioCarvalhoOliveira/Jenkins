@@ -7,6 +7,7 @@ using gitConfig;
 using packageConfig;
 using processConfig;
 using System.Text;
+using Jenkins.Services;
 
 namespace Jenkins
 {
@@ -27,13 +28,35 @@ namespace Jenkins
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.CreateNoWindow = true;//desabilita a janela de saída do terminal
 
+            #region chamada da api jenkins
+            string jenkinsUrl = "http://localhost:8080/job/ParameterJson/71/artifact/parametros.json";
+            string localFilePath = "D:\\GitHub\\Jenkins\\util\\parametros.json";
+            
+            string? user = "win_adm_inacio:Flocktro0per.UHK70"; // Opcional
+
+            JenkinsApiService jenkinsApiService = new JenkinsApiService(jenkinsUrl, user);
+
+            try
+            {
+                string jsonData = await jenkinsApiService.GetJsonDataAsync();
+                File.WriteAllText(localFilePath, jsonData);
+
+                Console.WriteLine($"Arquivo JSON salvo em: {localFilePath}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro: {ex.Message}");
+            }
+            #endregion
+
+
             #region chamada dos métodos das subclasses 
             string authArguments;
             string apiPackageArguments;
             consoleSettings.authUser(out authArguments);
             process.StartInfo.Arguments = "-Command " + "" + authArguments + "";
-            
-            //branchSettings.catchingGitParams();
+
+            branchSettings.catchingGitParams();
             builderBranch.branchCloning();
 
             packageSettings.buildingApiPackage(out apiPackageArguments);
