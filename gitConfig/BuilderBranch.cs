@@ -10,6 +10,7 @@ namespace gitConfig
     {
          public bool AppBuildPackage { get; set; }
          public bool ApiBuildPackage { get; set; }
+         public bool ServiceBuildPackage { get; set; }
         
         public void branchCloning()
         {

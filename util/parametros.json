@@ -1,0 +1,19 @@
+{
+    "Senha": {
+        "encryptedValue": "{AQAAABAAAAAQQ1lAwxHVA4uqhEDaDmS7HN0LGsPNMIaHG49Gsa4MLRM=}",
+        "plainText": "123456"
+    },
+    "Usuario": "inacio.oliveira",
+    "Pacote": "*V16",
+    "Pacotes individuais": "V16",
+    "APIVendas": false,
+    "APIService": true,
+    "APIConsorciado": false,
+    "APPConsorcio": false,
+    "*APPVendas": true,
+    "*APPConsorciado": false,
+    "*WEBConsorciado": false,
+    "*PlenoWeb": false,
+    "*PlenoService": true,
+    "*VendasService": false
+}

@@ -27,7 +27,7 @@ namespace processConfig
             var consoleSettings = JsonConvert.DeserializeObject<ConsoleSettings>(json);
    
             //Console.WriteLine($"informe a senha:");           
-            var senha1 = "Flocktro0per.UHK69";
+            var senha1 = "Flocktro0per.UHK70";
             //string senha = Console.ReadLine();          
 
             string[] param = new string[5];

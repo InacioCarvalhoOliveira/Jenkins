@@ -30,8 +30,8 @@ namespace packageConfig
             // --debug or --release
             
             StringBuilder scriptBuilder = new StringBuilder();
-
-            if(packageSettings?.PackageType == "api" && builderBranch?.ApiBuildPackage == true)
+            // TODO : SE for 
+            if(packageSettings?.PackageType == "apis" && builderBranch?.ApiBuildPackage == true)
             {
                 string[] param = new string[7];
                 param[0] = $"dotnet ";
@@ -46,21 +46,44 @@ namespace packageConfig
                 {
                 scriptBuilder.AppendLine(item);
                 }
-            }else{
-                // flutter build web --release --output=meu/caminho/
-                string[] param = new string[1];
-                param[0] = $"cd front;' ";
-                param[0] = $"flutter clean;";
-                param[0] = $"flutter build web --{packageSettings?.Pubmode} ";
-                //param[1] = $"--output='{packageS  ettings?.SendTo}'";
+            }
+            else if(packageSettings?.PackageType == "services" && builderBranch?.ServiceBuildPackage == true)
+            {
+                string demaisClientes = "WebConsorciado(Demais Clientes)";
+                string[] param = new string[7];
+                param[0] = $"dotnet ";
+                param[1] = $"'{packageSettings?.SkdVersion}' publish -c --framework netcoreapp2.2 ";
+                param[2] = $"{packageSettings?.Pubmode} -r ";
+                param[3] = $"{packageSettings?.SolutionPlatform} ";
+                param[4] = $"--output '{packageSettings?.SendTo}/{packageSettings?.AliasPublication}' ";
+                param[5] = $"'{packageSettings?.PathProject}/{packageSettings?.PackageType}/";
+                param[6] = $"{packageSettings?.AliasSolution}/{demaisClientes}/{packageSettings?.NameProj}.sln'";
 
                 foreach (string item in param)
                 {
                 scriptBuilder.AppendLine(item);
                 }
             }
+            else
+            {
+                          
+                string a = @"D:\GitHub\PublishedPack\app\fancar\front\flutter_build.bat";              
+                //string b = @"D:\GitHub\PublishedPack\app\fancar\front";
+                //string a = @"D:\GitHub\Jenkins\util\flutter_build.bat";
 
-           
+               string b = @"'D:\GitHub\Jenkins\util\flutter_build.bat' 'D:\GitHub\PublishedPack\app\fancar\front'";
+                // flutter build web --release --output=meu/caminho/
+                string[] param = new string[1];
+                
+                //param[0] = $@"XCOPY /Y '{b}';";
+                param[0] = $@"Start-Process -Wait -FilePath '{a}'";
+        
+
+                foreach (string item in param)
+                {
+                scriptBuilder.AppendLine(item);
+                }
+            }
 
             //coleta os itens do foreach e armazena tipo dado de retorno do método. 
             // TODO: forma de validar se no stringbuilder vem conteudo para depois jogar 'arguments'
@@ -89,6 +112,7 @@ namespace packageConfig
         //     string rawArguments = scriptBuilder.ToString();
         //     string correctedArguments = rawArguments.Replace("\"", "").Replace("\r\n", "");
         //     appPackageArguments = correctedArguments;
+        // XCOPY /S /I /Y 'D:\GitHub\PublishedPack\app\fancar\front' 'D:\GitHub\PublishedPack\app\fancar'
 
 
         // }

@@ -1,26 +1,28 @@
 {
-    "ApiBuildPackage":"false",
-    "AppBuildPackage":"true",
+    "AppBuildPackage":"false",
+    "ApiBuildPackage":"true",
+    "ServiceBuildPackage":"false",
     
     "Branch":"",
     "BranchName":"develop",
     "TFSLink":"https://tfs.seniorsolution.com.br/Consorcio",
     "TagGit":"_git",
-    "Project":"SQCONS-APP",
-    "Repository":"SQCONS-APP",
+    "Project":"SQCONS-WebApi",
+    "Repository":"SQConsorcio.API",
     
     "Usuario":"inacio.oliveira",
     "Dominio":"@sinqia.com.br",
     
     "SkdVersion":"C:/Program Files/dotnet/sdk/5.0.408/dotnet",
     "PackagePath":"D:/GitHub/PublishedPack",
-    "PackageType":"app",
-    "Pubmode":"release",
+    "PackageType":"apis",
+    "Pubmode":"Release",
     "SolutionPlatform":"win-x64",
     "PathProject":"D:/GitHub/PublishedPack",
     "NameProj":"SQConsorcio",
     "SolutionProject":"API",
-    "AliasSolution":"reserva",
-    "AliasPublication":"vendas",
-    "SendTo":"D:/GitHub/PublishedPack/pub"
+    "AliasSolution":"promenac",
+    "AliasPublication":"service",
+    "SendTo":"C:/inetpub/wwwroot/BASES/PROMENAC/apis"
+    
 }

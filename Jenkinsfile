@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    checkout scmGit(
+    branches: [[name:'developWin']],
+    userRemoteConfigs: [[credentialsId:'AAAAC3NzaC1lZDI1NTE5AAAAIGzfKGvRT4+F/9W/+zb1kkK8l9pYtKKD8FzEPkw0DjBX',
+        url:'https://github.com/InacioCarvalhoOliveira/Jenkins.git']])
     parameters {
         password(name: 'Senha', defaultValue: '', description: 'Senha Hoster') 
         string(name: 'Usuario', defaultValue: '', description: 'Usuário Hoster')
@@ -26,21 +30,6 @@ pipeline {
     stages {
         stage("Build") {
              steps {
-            //     // Access the selected choice parameter
-            //     echo "Senha=${params.Senha}"
-            //     echo "Usuario=${params.Usuario}"
-            //     echo "Pacote=${params.Pacote}"                
-            //     echo "APIVendas=${params.APIVendas}"
-            //     echo "APIVendas=${params.APIVendas}"
-            //     echo "APPConsorcio=${params.APPConsorcio}"
-            //     echo "APPConsorcio=${params.APPConsorcio}"
-            //     echo "*APPVendas=${params.*APPVendas}"
-            //     echo "*APPConsorciado=${params.*APPConsorciado}"
-            //     echo "*WEBConsorciado=${params.*WEBConsorciado}"
-            //     echo "*PlenoWeb=${params.*PlenoWeb}"
-            //     echo "*PlenoService=${params.*PlenoService}"
-            //     echo "*VendasService=${params.*VendasService}"
-
                 script {
                         def parametrosJson = [
                             Senha: params.Senha,
@@ -67,9 +56,9 @@ pipeline {
                     }
             }
         }
-        stage("Test") {
+        stage("Serializing params to Json") {
             steps {
-                echo "Testing the app..."
+                archiveArtifacts artifacts: 'parametros.json', allowEmptyArchive: true
             }
         }
         stage("Deploy") {
