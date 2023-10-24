@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\Jenkins\\Jenkins.csproj": {}
+    "J:\\Jenkins\\Jenkins.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\Jenkins\\Jenkins.csproj": {
+    "J:\\Jenkins\\Jenkins.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\Jenkins\\Jenkins.csproj",
+        "projectUniqueName": "J:\\Jenkins\\Jenkins.csproj",
         "projectName": "Jenkins",
-        "projectPath": "D:\\GitHub\\Jenkins\\Jenkins.csproj",
-        "packagesPath": "C:\\Users\\inacio.oliveira.SENIORSOLUTION\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\Jenkins\\obj\\",
+        "projectPath": "J:\\Jenkins\\Jenkins.csproj",
+        "packagesPath": "C:\\Users\\inacio.oliveira\\.nuget\\packages\\",
+        "outputPath": "J:\\Jenkins\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\inacio.oliveira.SENIORSOLUTION\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\inacio.oliveira\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,12 +25,8 @@
           "net6.0"
         ],
         "sources": {
-          "C:\\GitHub\\SQCONS-PLENOWEB-V15\\Silverlight\\Torresan.Shared.SL\\Bin": {},
-          "C:\\GitHub\\SQCONS-PLENOWEB-V15\\Silverlight\\Torresan.Web\\bin": {},
-          "C:\\GitHub\\SQConsorcio.API\\bin": {},
           "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\inacio.oliveira.SENIORSOLUTION\\OneDrive - Sinqia\\Documentos\\Corel\\Corel Content\\Export Presets": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,8 +56,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -70,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.413\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.123\\RuntimeIdentifierGraph.json"
         }
       }
     }

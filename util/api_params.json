@@ -21,8 +21,8 @@
     "PathProject":"D:/GitHub/PublishedPack",
     "NameProj":"SQConsorcio",
     "SolutionProject":"API",
-    "AliasSolution":"promenac",
-    "AliasPublication":"service",
-    "SendTo":"C:/inetpub/wwwroot/BASES/PROMENAC/apis"
+    "AliasSolution":"zema",
+    "AliasPublication":"vendas",
+    "SendTo":"J:/pub/apis"
     
 }
