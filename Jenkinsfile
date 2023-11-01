@@ -1,9 +1,6 @@
 pipeline {
     agent any
-    checkout scmGit(
-    branches: [[name:'developWin']],
-    userRemoteConfigs: [[credentialsId:'AAAAC3NzaC1lZDI1NTE5AAAAIGzfKGvRT4+F/9W/+zb1kkK8l9pYtKKD8FzEPkw0DjBX',
-        url:'https://github.com/InacioCarvalhoOliveira/Jenkins.git']])
+    
     parameters {
         password(name: 'Senha', defaultValue: '', description: 'Senha Hoster') 
         string(name: 'Usuario', defaultValue: '', description: 'Usuário Hoster')
