@@ -21,7 +21,7 @@ namespace processConfig
         {
 
             // TODO: melhorarar a busca do arquivo json
-            string jsonPath = "D:\\GitHub\\Jenkins\\util\\api_params.json";
+            string jsonPath = "J:\\Jenkins\\util\\api_params.json";
 
             string json = File.ReadAllText(jsonPath);
             var consoleSettings = JsonConvert.DeserializeObject<ConsoleSettings>(json);

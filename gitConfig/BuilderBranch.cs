@@ -15,7 +15,7 @@ namespace gitConfig
         public void branchCloning()
         {
                        
-            string jsonPath = "D:\\GitHub\\Jenkins\\util\\api_params.json";
+            string jsonPath = "J:\\Jenkins\\util\\api_params.json";
             string json = File.ReadAllText(jsonPath);
             var branchSettings = JsonConvert.DeserializeObject<BranchSettings>(json);
             var packageSettings = JsonConvert.DeserializeObject<PackageSettings>(json);

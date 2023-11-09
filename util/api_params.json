@@ -14,11 +14,11 @@
     "Dominio":"@sinqia.com.br",
     
     "SkdVersion":"C:/Program Files/dotnet/sdk/5.0.408/dotnet",
-    "PackagePath":"D:/GitHub/PublishedPack",
+    "PackagePath":"J:/sqmsbuild/PublishedPack",
     "PackageType":"apis",
     "Pubmode":"Release",
     "SolutionPlatform":"win-x64",
-    "PathProject":"D:/GitHub/PublishedPack",
+    "PathProject":"J:/sqmsbuild/PublishedPack",
     "NameProj":"SQConsorcio",
     "SolutionProject":"API",
     "AliasSolution":"zema",

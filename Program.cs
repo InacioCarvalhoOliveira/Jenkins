@@ -30,7 +30,7 @@ namespace Jenkins
 
             #region chamada da api jenkins
             string jenkinsUrl = "http://localhost:8080/job/ParameterJson/71/artifact/parametros.json";
-            string localFilePath = "D:\\GitHub\\Jenkins\\util\\parametros.json";
+            string localFilePath = "J:\\Jenkins\\util\\parametros.json";
             //TODO senha aqui hoster
             string? user = "win_adm_inacio:";
 

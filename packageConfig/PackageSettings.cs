@@ -18,7 +18,7 @@ namespace packageConfig
         public string? NameProj { get; set; } // 64x,86x,32x
         public string? AliasSolution { get; set; }
         public string? AliasPublication { get; set; }
-        string jsonPath = "D:\\GitHub\\Jenkins\\util\\api_params.json";
+        string jsonPath = "J:\\Jenkins\\util\\api_params.json";
         public void buildingApiPackage(out string apiPackageArguments)
         {
             // TODO: melhorarar a busca do arquivo json

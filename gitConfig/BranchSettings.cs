@@ -18,7 +18,7 @@ namespace gitConfig
         private ProcessStartInfo? gitStartInfo;
         public void catchingGitParams()
         {
-            string jsonPath = "D:\\GitHub\\Jenkins\\util\\api_params.json";
+            string jsonPath = "J:\\Jenkins\\util\\api_params.json";
             try
             {
                 Process gitProcess = new Process();
