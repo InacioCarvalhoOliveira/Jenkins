@@ -28,31 +28,41 @@ pipeline {
         stage("Build") {
              steps {
                 script {
-                        def parametrosJson = [
-                            Senha: params.Senha,
-                            Usuario: params.Usuario,
-                            Pacote: params.Pacote,
-                            'Pacotes individuais': params['Pacotes individuais'],
-                            APIVendas: params.APIVendas,
-                            APIService: params.APIService,
-                            APIConsorciado: params.APIConsorciado,
-                            APPConsorcio: params.APPConsorcio,
-                            '*APPVendas': params['*APPVendas'],
-                            '*APPConsorciado': params['*APPConsorciado'],
-                            '*WEBConsorciado': params['*WEBConsorciado'],
-                            '*PlenoWeb': params['*PlenoWeb'],
-                            '*PlenoService': params['*PlenoService'],
-                            '*VendasService': params['*VendasService']
-                        ]
+                    def parametrosJson = [
+                        Senha: params.Senha,
+                        Usuario: params.Usuario,
+                        Pacote: params.Pacote,
+                        'Pacotes individuais': params['Pacotes individuais'],
+                        APIVendas: params.APIVendas,
+                        APIService: params.APIService,
+                        APIConsorciado: params.APIConsorciado,
+                        APPConsorcio: params.APPConsorcio,
+                        '*APPVendas': params['*APPVendas'],
+                        '*APPConsorciado': params['*APPConsorciado'],
+                        '*WEBConsorciado': params['*WEBConsorciado'],
+                        '*PlenoWeb': params['*PlenoWeb'],
+                        '*PlenoService': params['*PlenoService'],
+                        '*VendasService': params['*VendasService']
+                    ]
 
-                        def jsonString = groovy.json.JsonOutput.toJson(parametrosJson)
-                        writeFile file: 'parametros.json', text: jsonString
+                    def jsonString = groovy.json.JsonOutput.toJson(parametrosJson)
+                    writeFile file: 'parametros.json', text: jsonString
+                    
+                    // Lê o conteúdo do arquivo parametros.json
+                    def parametrosContent = readFile('parametros.json').trim()
+                    
+                    // Converte o conteúdo para um objeto JSON
+                    def parametrosObject = readJSON text: parametrosContent
+                    
+                    // Acessa a propriedade APIVendas do objeto JSON
+                    def jenkinsURL = "${parametrosObject.APIVendas}/build"  // Substitua com o caminho correto na API
 
-                        // Imprime o JSON (opcional)
-                        echo "JSON de Parâmetros: ${jsonString}"
-                    }
+                    // Imprime a URL construída (opcional)
+                    echo "URL da API do Jenkins: ${jenkinsURL}"
+                }
             }
         }
+        
         stage("Serializing params to Json") {
             steps {
                 archiveArtifacts artifacts: 'parametros.json', allowEmptyArchive: false
@@ -65,3 +75,20 @@ pipeline {
         }
     }
 }
+
+stage("Build") {
+    steps {
+        script {
+            // Lê o conteúdo do arquivo parametros.json
+
+            // Converte o conteúdo para um objeto JSON
+            def parametrosJson = readJSON text: parametrosContent
+
+            // Constrói a URL da API do Jenkins com base nos parâmetros lidos
+
+            // Utilize 'jenkinsURL' para acessar dinamicamente a API do Jenkins
+            // Realize as operações necessárias com essa URL
+        }
+    }
+}
+
