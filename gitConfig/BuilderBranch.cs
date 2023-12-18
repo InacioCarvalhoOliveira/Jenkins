@@ -21,7 +21,7 @@ namespace gitConfig
             var packageSettings = JsonConvert.DeserializeObject<PackageSettings>(json);
             var builderBranch = JsonConvert.DeserializeObject<BuilderBranch>(json);
 
-            if (Directory.Exists($"D:\\GitHub\\PublishedPack\\api\\{packageSettings?.AliasSolution}"))
+            if (Directory.Exists($"J:\\sqmsbuild\\PublishedPack\\api\\{packageSettings?.AliasSolution}"))
             {
                 Console.WriteLine("Um repositorio de projeto ja existe, o mesmo será utilizado para construir os pacotes");
                 PackageSettings pkg = new PackageSettings();

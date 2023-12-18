@@ -29,10 +29,10 @@ namespace Jenkins
             process.StartInfo.CreateNoWindow = true;//desabilita a janela de saída do terminal
 
             #region chamada da api jenkins
-            string jenkinsUrl = "http://localhost:8080/job/ParameterJson/71/artifact/parametros.json";
+            string jenkinsUrl = "http://localhost:8080/job/ParameterJson";
             string localFilePath = "J:\\Jenkins\\util\\parametros.json";
             //TODO senha aqui hoster
-            string? user = "win_adm_inacio:";
+            string? user = "win_adm_inacio:Flocktro0per.UHK70";
 
             JenkinsApiService jenkinsApiService = new JenkinsApiService(jenkinsUrl, user);
 
@@ -56,8 +56,10 @@ namespace Jenkins
             consoleSettings.authUser(out authArguments);
             process.StartInfo.Arguments = "-Command " + "" + authArguments + "";
 
+            //json mapeado com parâmetros de build e clone do TFS e SKD dedicada (obrigatório)
             branchSettings.catchingGitParams();
-            builderBranch.branchCloning();
+            //clone dos pacotes referenciados pelo json (opcional)
+            //builderBranch.branchCloning();
 
             packageSettings.buildingApiPackage(out apiPackageArguments);
             process.StartInfo.Arguments = "-Command " + "" + apiPackageArguments + "";

@@ -55,7 +55,7 @@ pipeline {
         }
         stage("Serializing params to Json") {
             steps {
-                archiveArtifacts artifacts: 'parametros.json', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'parametros.json', allowEmptyArchive: false
             }
         }
         stage("Deploy") {
