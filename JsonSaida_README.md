@@ -1,4 +1,4 @@
-**Parâmetros de saída Json **
+**Parâmetros de saída Json**
 
 A partir do Json de entrada estes dados são setados no Json que é consumido pela aplicação para
 construir os pacotes
